@@ -4,9 +4,11 @@ import numpy as np
 FRAMEWIDTH = 480
 FRAMEHEIGHT = 400
 
-# cap = cv2.VideoCapture("Resources/Fire.mp4")
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture("D:\python Code\OpenCV projects\Fire Detection Resources\Fire.mp4")
+# cap = cv2.VideoCapture(1)
 
+# vals=[1,52,57,255,103,255] # value for reading from video
+vals=[9,53,40,255,229,255] # value for reading from camera and it's better.
 
 def empty(a):
     pass
@@ -15,12 +17,12 @@ def empty(a):
 # Create the Trackbars
 cv2.namedWindow("TrackBars")
 cv2.resizeWindow("TrackBars", 640, 300)
-cv2.createTrackbar("Hue Min", "TrackBars", 1, 179, empty)
-cv2.createTrackbar("Hue Max", "TrackBars", 52, 179, empty)
-cv2.createTrackbar("SAT Min", "TrackBars", 57, 255, empty)
-cv2.createTrackbar("SAT Max", "TrackBars", 255, 255, empty)
-cv2.createTrackbar("Value Min", "TrackBars", 103, 255, empty)
-cv2.createTrackbar("Value Max", "TrackBars", 255, 255, empty)
+cv2.createTrackbar("Hue Min", "TrackBars", vals[0], 179, empty)
+cv2.createTrackbar("Hue Max", "TrackBars",  vals[1], 179, empty)
+cv2.createTrackbar("SAT Min", "TrackBars",  vals[2], 255, empty)
+cv2.createTrackbar("SAT Max", "TrackBars",  vals[3], 255, empty)
+cv2.createTrackbar("Value Min", "TrackBars",  vals[4], 255, empty)
+cv2.createTrackbar("Value Max", "TrackBars",  vals[5], 255, empty)
 
 while True:
     success, img = cap.read()
@@ -30,7 +32,7 @@ while True:
     # Start the video again if it ends
     if cap.get(cv2.CAP_PROP_POS_FRAMES) == cap.get(cv2.CAP_PROP_FRAME_COUNT):
         cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-    imgBlur = cv2.GaussianBlur(img , (21, 21), 0)
+    imgBlur = cv2.GaussianBlur(img , (15,15), 0)
     imgHsv = cv2.cvtColor(imgBlur, cv2.COLOR_BGR2HSV)
 
     h_min = cv2.getTrackbarPos("Hue Min", "TrackBars")
