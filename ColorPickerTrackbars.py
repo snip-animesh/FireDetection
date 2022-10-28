@@ -4,8 +4,8 @@ import numpy as np
 FRAMEWIDTH = 480
 FRAMEHEIGHT = 400
 
-cap = cv2.VideoCapture("D:\python Code\OpenCV projects\Fire Detection Resources\Fire.mp4")
-# cap = cv2.VideoCapture(1)
+# cap = cv2.VideoCapture("D:\python Code\OpenCV projects\Fire Detection Resources\Fire.mp4")
+cap = cv2.VideoCapture(1)
 
 # vals=[1,52,57,255,103,255] # value for reading from video
 vals=[9,53,40,255,229,255] # value for reading from camera and it's better.
@@ -32,7 +32,7 @@ while True:
     # Start the video again if it ends
     if cap.get(cv2.CAP_PROP_POS_FRAMES) == cap.get(cv2.CAP_PROP_FRAME_COUNT):
         cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
-    imgBlur = cv2.GaussianBlur(img , (15,15), 0)
+    imgBlur = cv2.GaussianBlur(img , (21,21), 0)
     imgHsv = cv2.cvtColor(imgBlur, cv2.COLOR_BGR2HSV)
 
     h_min = cv2.getTrackbarPos("Hue Min", "TrackBars")
