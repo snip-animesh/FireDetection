@@ -4,8 +4,8 @@ import numpy as np
 FRAMEWIDTH = 480
 FRAMEHEIGHT = 400
 
-# cap = cv2.VideoCapture("D:\python Code\OpenCV projects\Fire Detection Resources\Fire.mp4")
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture("D:\python Code\OpenCV projects\Fire Detection Resources\Fire.mp4")
+# cap = cv2.VideoCapture(1)
 
 # vals=[1,52,57,255,103,255] # value for reading from video
 vals=[9,53,40,255,229,255] # value for reading from camera and it's better.
